@@ -1,0 +1,5 @@
+---
+triple:          'arm64-apple-darwin'
+binary-path:     '/Users/ldg/Documents/Algorithm/prefix_Sum/prefix_sum_re'
+relocations:     []
+...
