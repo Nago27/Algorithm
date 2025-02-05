@@ -17,7 +17,7 @@ int main() {
         int num;
         cin >> num;
 
-        while (dq.size() && dq.back().first > num) { // 현재 수 보다 큰 값을 덱에서 제거
+        while (dq.size() && dq.back().first > num) { // 현재 수 보다 큰 값을 덱에서 제거 / .first: pair 클래스 멤버
             dq.pop_back(); 
         }
         dq.push_back({num, i});
