@@ -41,7 +41,7 @@ void quickSort(vector<int> &A, int start, int end, int K)
 int middle_Pivot(vector<int> &A, int start, int end)
 {   
     if (start + 1 == end){
-        if (A[start] == A[end]){
+        if (A[start] >  A[end]){
             swap(A[start], A[end]);
         }
         return end;
@@ -60,7 +60,7 @@ int middle_Pivot(vector<int> &A, int start, int end)
             i++;
         }
         if (i < j){
-            swap(A[i++], A[j++]); // 찾은 i와 j를 교환
+            swap(A[i], A[j]); // 찾은 i와 j를 교환
         }  
         else {
             break;
