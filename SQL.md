@@ -18,3 +18,12 @@ LIMIT 2 : 상위 2줄까지만 출력
 HAVING 검색조건
 GROUP BY {행 이름 | 열 | 위치} 
 
+## SUM, MAX, MIN
+
+SELECT SUM(가져올 열 정보) FROM (원하는 테이블)
+GROUP BY 컬럼명;
+
+SELECT MAX(가져올 열 정보) AS (새로 정할 필드 명) FROM (원하는 테이블)
+SELECT MIN(가져올 열 정보) FROM (원하는 테이블)
+SELECT COUNT(가져올 열 정보) FROM (원하는 테이블)
+SELECT COUNT(DISTINCT 가져올 열 정보) FROM (원하는 테이블) : 중복 제거
