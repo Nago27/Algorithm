@@ -39,6 +39,7 @@ AS ~ : 칼럼 명 바꿀때 사용 / ex. FROM ICECREAM_INFO AS I -> 테이블 �
 ORDER BY (정렬대상[ASC/DESC]) : 결과 값을 정렬
 AVG : 평균값 산출 -> 반드시 그룹화를 사용해야 함
 TRUNCATE(버림할 숫자, 숫자의 소수점 이하 자릿수) 
+BETWEEN 숫자 and 숫자 : 사이값 조건
 
 YEAR(), MONTH(), HOUR() .. : 날짜/시간 변환
 
