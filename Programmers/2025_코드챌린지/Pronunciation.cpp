@@ -12,65 +12,65 @@
 #include <iostream>
 #include <string>
 #include <vector>
-#include <unordered_map> // 중복 제거 map
-#define MAX = 4e5 + 4e2;
 
 using namespace std;
 
-int parent[MAX];
-int degree[MAX];
+vector<vector<int> > Root;
+bool visited[1000001] = {false};
+int odd, even, re_odd, re_even;
+int odd_even_tree, re_odd_even_tree;
 
-int find(int a){ // 경로 압축: 모든 값의 부모 노드를 root로 만듬
-    if(parent[a] == a) {
-        return a;
+void check_holjak_tree () {
+    if((odd == 1 && even = 0) || (odd == 0 && even == 1)){ // 홀짝트리인 경우
+        odd_even_tree++;
     }
-
-    return parent[a] = find(parent[a]);
 }
 
-void union_find(int a, int b){
-    a = find(a);
-    b = find(b);
+void check_re_holjak_tree () {
+    if((re_odd == 1 && re_even = 0) || (re_odd == 0 && re_even == 1)){ // 홀짝트리인 경우
+        re_odd_even_tree++;
+    }
+}
 
-    if(a != b){
-        parent[b] = a;
+void DFS_Tree (int n) {
+    if (n % 2 == 1 && Root[n].size() % 2 == 1) odd++; // 홀수 노드
+    if (n % 2 == 0 && Root[n].size() % 2 == 0) even++; // 짝수 노드
+    if (n % 2 == 1 && Root[n].size() % 2 == 0) re_odd++; // 역홀수 노드
+    if (n % 2 == 0 && Root[n].size() % 2 == 1) re_even++; // 역짝수 노드
+
+    for (auto i : Root[n]){ // DFS로 트리 탐색
+        if(visited[i]){
+            continue;
+        }
+        visited[i] = true;
+        DFS_Tree(i);
     }
 }
 
 vector<int> solution(vector<int> nodes, vector<vector<int>> edges) {
     // nodes: 노드들의 번호를 담긴 배열, edges: 포레스트에 존재하는 간선들의 정보
     // 홀짝트리, 역홀짝트리 개수를 순서대로 담아 return
-    // union find 알고리즘 사용
-    vector<int> answer;
-    int n = nodes.size();
-    unordered_map<int, int> node_tree_idx;
 
-    for(int i = 0; i < n; i++){
-        parent[i] = i;
-        node_tree_idx[nodes[i]] = i;
+    for(auto e : edges) { // 간선 정보 저장
+        Root[e[0]].push_back(e[1]);
+        Root[e[1]].push_back(e[0]);
     }
 
-    for (auto edge : edges){
-        int u = node_tree_idx[edge[0]];
-        int v = node_tree_idx[edge[1]];
-
-        degree[u]++;
-        degree[v]++;
+    for (auto v : nodes){
+        if(visited[v]){
+            continue;
+        }
+        odd = even = re_odd = re_even = 0;
+        visited[v] = true;
+        DFS_Tree(v);
+        check_holjak_tree();
+        check_re_holjak_tree();
     }
 
-    for (auto edge : edges){
-        int u = node_tree_idx[edge[0]];
-        int v = node_tree_idx[edge[1]];
-
-        union_find(u, v);
-    }
-
-
-    
-    return answer;
+   
+    return {odd_even_tree, re_odd_even_tree};
 }
 
 int main(){
-
-
+    
 }
