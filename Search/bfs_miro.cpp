@@ -53,5 +53,4 @@ void BFS(int map_x, int map_y){ // 너비 우선 탐색 구현
             }
         }
     }
-
 }
