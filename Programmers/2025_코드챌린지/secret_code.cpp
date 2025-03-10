@@ -8,7 +8,7 @@ using namespace std;
 vector<int> num;
 vector<vector<int> > combs;
 
-int Combinations(int n, int r){ 
+void Combinations(int n, int r){ 
     if(num.size() == 5){
         combs.push_back(num);
         return;
@@ -28,6 +28,7 @@ int solution(int n, vector<vector<int>> q, vector<int> ans) {
     Combinations(n, 1);
 
     for(auto& c : combs){
+        bool check = true;
         for(int i = 0; i < q.size(); i++){
             int cnt = 0;
             for (int j = 0; j < 5; j++){
@@ -36,10 +37,10 @@ int solution(int n, vector<vector<int>> q, vector<int> ans) {
                 }
             }
 
-            if(cnt != ans[i]) return;
+            if(cnt != ans[i]) check = false;
         }
-        answer++;
+        if(check) answer++;
     }
     
-    return answer;
+    return answer;  
 }
