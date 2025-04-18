@@ -13,7 +13,7 @@ void Find(int num) { // 백트래킹 탐색
     if(num == 2*n){
         ans++;
         return;
-    }
+    }   
     if (arr[num] == 0){
         for(int i = 1; i <= n; i++){
             if(visited[i]){
